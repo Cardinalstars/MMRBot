@@ -1,8 +1,9 @@
 import requests
 import json
+import constants
 
 # Replace 'YOUR_API_KEY' with your actual Steam WebAPI key
-API_KEY = '4CE0ABBE5087E9EFFC6315E54E13ED54'
+API_KEY = constants.steamKey
 
 # Function to get match details by match ID
 def get_dota2_mmr(player_id):

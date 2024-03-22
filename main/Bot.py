@@ -1,6 +1,7 @@
 from typing import Any
 
 import discord
+import constants
 from discord import Intents
 import CommandHandler
 
@@ -33,4 +34,4 @@ intents.guilds = True
 
 
 client = MyClient(intents=intents)
-client.run('MTIwODk5NzEzMTE5MzU1NzA3Mg.GdBR5M.XzqJVU0l-_GCdNLdOSSTLO7ZMghIceqqmOF0sU')
+client.run(constants.discordKey)
