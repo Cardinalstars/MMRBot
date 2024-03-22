@@ -2,4 +2,4 @@
 /shelf/
 /workspace.xml
 DataStore/*
-/main/constants.py
+../main/constants.py
