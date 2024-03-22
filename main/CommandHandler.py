@@ -10,8 +10,8 @@ class CommandHandler:
     def __init__(self):
         pass
 
-    def mmr(self, message):
-        pass
+    def mmr(*args):
+        return ''
 
     def addAlias(self):
         pass
@@ -24,7 +24,8 @@ class CommandHandler:
         else:
             return "Steam Id couldn't be added..."
 
-
+    def listSteamId(*args):
+        return ''
     def showAlias(self):
         pass
 
@@ -59,6 +60,7 @@ class CommandHandler:
         "!mmr": mmr,
         "!addAlias": addAlias,
         "!addSteamId": addSteamId,
+        "!listSteamId": listSteamId,
         "!showAlias": showAlias,
         "!lastMatch": lastMatch,
         "!theWord": theWord,
@@ -72,8 +74,11 @@ class CommandHandler:
     }
 
     def parseMessage(self, message: discord.Message):
-        for command, function in self.commandToFunctionMap.items():
-            if message.content.startswith(command):
-                args = message.content.split()[1:]
-                args = (f"{message.author}",) + tuple(args)
-                return function(*args)
+        command = message.content.split()[0]
+        if command in self.commandToFunctionMap:
+            function = self.commandToFunctionMap[command]
+            args = message.content.split()[1:]
+            args = (f"{message.author}",) + tuple(args)
+            return function(*args)
+        else:
+            return ''

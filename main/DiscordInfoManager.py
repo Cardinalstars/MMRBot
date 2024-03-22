@@ -5,7 +5,7 @@ import asyncio
 
 # At some point
 def sanitizeStringForJson(string):
-    if len(string) > 32:
+    if len(string) > 32 or not string.isdigit():
         return ""
     else:
         sanitized_string = json.dumps(string)
@@ -30,7 +30,7 @@ class discordInfoManager:
             return {"users": []}
 
     def addDiscordUsername(self, discordUsername):
-        discordId = sanitizeStringForJson(discordUsername)
+        discordId = discordUsername
         if discordId != "":
             if "users" in self.discordInfo and isinstance(self.discordInfo["users"], list):
                 # Append username as an object to "users" array
@@ -49,6 +49,7 @@ class discordInfoManager:
             return False  # Handle the case where discordId is empty
 
     def addSteamId(self, steamId, discordUsername):
+        sanitizeStringForJson(steamId)
         addedId = False
         print(f"Adding SteamId for {discordUsername}")
         if self.addDiscordUsername(discordUsername):

@@ -25,7 +25,10 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         print(f'Message from {message.author}: {message.content}')
-        await message.channel.send(self.commandHandler.parseMessage(message))
+        if message.author != 'MMR Bot#3792':
+            response = self.commandHandler.parseMessage(message)
+            if response != '':
+                await message.channel.send(response)
 
 intents = discord.Intents.default()
 intents.message_content = True
