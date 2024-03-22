@@ -1,5 +1,5 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-DataStore
+DataStore/*
 ../main/constants.py
